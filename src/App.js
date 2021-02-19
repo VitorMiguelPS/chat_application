@@ -6,12 +6,13 @@ import LoginForm from "./components/LoginForm";
 import "./assets/App.css";
 
 const App = () => {
+  const { REACT_APP_PROJECT_ID } = process.env;
   if(!localStorage.getItem("username")) return <LoginForm />
 
   return (
     <ChatEngine 
         height="100vh"
-        projectID="55bb295a-dba7-4061-92f5-680bbe00bcb8"
+        projectID={REACT_APP_PROJECT_ID}
         userName={localStorage.getItem("username")}
         userSecret={localStorage.getItem("password")}
         renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
